@@ -1,5 +1,15 @@
-import math
+def max(a,b):
+    while b:
+        tmp = b
+        b = a % b
+        a = tmp
+    return a
+
+
 a,b = (int(x) for x in input().split())
 
-print(math.gcd(a,b))
-print(math.lcm(a,b))
+Max = max(a,b)
+
+print(Max)
+print((a*b)//Max)
+
