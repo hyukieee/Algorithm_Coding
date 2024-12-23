@@ -15,8 +15,14 @@ room = 0
 for i in range(1,7):
     tmp1 = boy[i] % K
     tmp2 = girl[i] % K
-    
-    room = room + boy[i]//K + tmp1
-    room = room + girl[i]//K + tmp2
+    if(tmp1 > 0 ):
+        room = room + boy[i]//K + 1
+    else : 
+        room = room + boy[i]//K
+
+    if(tmp2 > 0 ):
+        room = room + girl[i]//K + 1
+    else : 
+        room = room + girl[i]//K
 
 print(room)
