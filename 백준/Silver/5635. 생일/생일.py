@@ -1,32 +1,22 @@
-class Student:
-    def __init__(self, name, day, month, year):
-        self.name = name
-        self.day = day
-        self.month = month
-        self.year = year
-
-    def birthday(self):
-        return (self.year, self.month, self.day)
+def find(n, lst):
+    young = old = lst[0]
+    
+    for student in lst:
+        name, day, month, year = student
+        birth = (int(year), int(month), int(day))
+        
+        if birth > (int(young[3]), int(young[2]), int(young[1])):
+            young = student
+        
+        if birth < (int(old[3]), int(old[2]), int(old[1])):
+            old = student
+    
+    return young[0], old[0]
 
 n = int(input())
-students = []
+lst = [input().split() for _ in range(n)]
 
-for i in range(n):
-    data = input().split()
-    name = data[0]
-    day = int(data[1])
-    month = int(data[2])
-    year = int(data[3])
-    students.append(Student(name, day, month, year))
+young_name, old_name = find(n, lst)
 
-youngest = students[0]
-oldest = students[0]
-
-for student in students:
-    if student.birthday() > youngest.birthday():
-        youngest = student
-    if student.birthday() < oldest.birthday():
-        oldest = student
-
-print(youngest.name)
-print(oldest.name)
+print(young_name)
+print(old_name)
